@@ -1,8 +1,13 @@
+import React, { useState } from 'react';
+
 function Register() {
     return (
       <div className="login-wrapper">
         <div className="login-form">
-            <div className='login-form__title'><h1>Register</h1></div>
+            <div className='login-form__title'><h1>Create Account</h1></div>
+            <div className='login-form__input-container'>
+                <input placeholder="Username"/>
+            </div>
             <div className='login-form__input-container'>
                 <input placeholder="Email"/>
             </div>
@@ -10,7 +15,7 @@ function Register() {
                 <input type='password' placeholder="Password"/>
             </div>
             <div className='login-form__button-container'>
-                <button>LOGIN</button>
+                <button>REGISTER</button>
             </div>
             <div className='login-form__footer'>
                 <p>Have an account?</p>
@@ -20,7 +25,7 @@ function Register() {
         </div>
       </div>
     );
-  }
+};
   
-  export default Register;
+export default Register;
   

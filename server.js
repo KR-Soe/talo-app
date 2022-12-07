@@ -2,8 +2,8 @@ const app = require('./src/routes/app');
 const http = require('http');
 
 const server = http.createServer(app);
-const port = '3000';
+const PORT = 3001;
 
-server.listen(port, () => {
-    console.log('running at port', port);
+server.listen(PORT, () => {
+    console.log('running at port:', PORT);
 });

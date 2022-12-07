@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './styles/scss/index.scss';
+import './assets/scss/index.scss';
 import App from './components/App';
 import Register from './components/Register';
+import Dashboard from './components/Dashboard';
 
 import {
   createBrowserRouter,
@@ -17,7 +18,11 @@ const router = createBrowserRouter([
   {
     path: '/register',
     element: <Register />
-  }
+  },
+  {
+    path: '/dashboard',
+    element: <Dashboard />
+  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
