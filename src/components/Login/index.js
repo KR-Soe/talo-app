@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { loginUser } from './loginUser';
 import React, { useState } from 'react';
 
-
 function Login() {
     const [userInfo, onChangeInfo] = useState({ email: '', password: '' });
     const navigate = useNavigate();
@@ -18,7 +17,6 @@ function Login() {
     const validateUser = async(email, password) => {
         const result = await loginUser(email, password);
     
-        console.log('result', result)
         if(!result) {
             return;
         }
