@@ -1,14 +1,12 @@
 const { userSchema } = require('./NeDb/schema');
 
 const getUser = async ({email, password}) => {
-    console.log('email', email)
     const user = new Promise((resolve, reject) => userSchema
     .find({$and: [{ email: email }, {password: password}]}).exec((err, docs) => {
         if(err) {
             return reject(err);
         }
 
-        console.log('docs', docs)
         return resolve(docs);
     }));
     
@@ -27,14 +25,36 @@ const getUsers = async () => {
     return data;
 };
 
-const createUser = async (user) => {
-    return new Promise((resolve, reject) => userSchema.insert(user, (err, res) => {
-        if(err){
+const getUserByMail = async (email) => {
+    const result = new Promise((resolve, reject) => userSchema
+    .find({ email: email }).exec((err, docs) => {
+        if(err) {
             return reject(err);
         }
 
-        return resolve(res);
+        return resolve(docs);
     }));
+    
+    return result;
+}
+
+const createUser = async (user) => {
+    const exists = await getUserByMail(user.email);
+
+    if(!exists.length) {
+        return new Promise((resolve, reject) => userSchema.insert(user, (err, res) => {
+            if(err){
+                return reject(err);
+            }
+    
+            return resolve(res);
+        }));
+    }
+
+    return {
+        error: 'error',
+        message: 'user alredy exist'
+    };
 }
 
 module.exports = { getUser, getUsers, createUser };
