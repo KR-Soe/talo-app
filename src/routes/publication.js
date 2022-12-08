@@ -5,5 +5,6 @@ const router = express.Router();
 
 router.get('/', controller.getPublications);
 router.post('/', controller.createPublication);
+router.get('/:userId', controller.getPublicationsUser);
 
 module.exports = router;

@@ -1,5 +1,18 @@
 const { publicationSchema } = require('./NeDb/schema');
 
+const getPublicationsUser = async (id) => {
+    const result = new Promise((resolve, reject) => publicationSchema
+    .find({ userId: id }).exec((err, docs) => {
+        if(err) {
+            return reject(err);
+        }
+
+        return resolve(docs);
+    }));
+    
+    return result;
+};
+
 const getPublications = async () => {
     const data = new Promise((resolve, reject) => publicationSchema
     .find({}).exec((err, res) => {
@@ -35,4 +48,4 @@ const createPublication = async (publication) => {
     }));
 }
 
-module.exports = { getPublicationById, getPublications, createPublication };
+module.exports = { getPublicationById, getPublications, getPublicationsUser, createPublication };
