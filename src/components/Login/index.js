@@ -21,7 +21,11 @@ function Login() {
             return;
         }
 
-        if(result.length > 0) navigate('/dashboard')
+        const user = result[0];
+        const userData = { username: user.username, email: user.email, id: user['_id'] }
+
+        localStorage.setItem('user', JSON.stringify(userData));
+        if(result.length > 0) navigate('/dashboard');
     }
 
     return (
@@ -45,7 +49,7 @@ function Login() {
         </div>
       </div>
     );
-  }
+}
   
-  export default Login;
+export default Login;
   
