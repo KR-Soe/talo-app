@@ -1,0 +1,120 @@
+.dashboard-wrapper {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    background-color: #f0f0f0;
+
+    .dashboard-aside {
+        background-color: #13101a;
+        color: #e9e5e5;
+        padding: 15px;
+        font-family: 'Cabin-Regular';
+        height: 100vh;
+        position: sticky;
+        top: 0;
+        box-sizing: border-box;
+    
+        .aside-content {
+            display: grid;
+            align-items: center;
+            height: 100%;
+
+            grid-template-rows: 150px repeat(3, 50px) 1fr;
+
+            &__image-container {
+                border-bottom: 2px solid white;
+                padding-bottom: 15px;
+
+                &__logo {
+                    display: block;
+                    margin: 0 auto;
+                    width: 230px;
+                    height: 80px;
+                }
+            }
+
+            &__field {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                
+                &__logo{
+                    width: 30px;
+                    height: 30px;
+                }
+
+                p {
+                    margin: 0;
+                    padding: 0;
+                    width: 100%;
+                }
+            }
+
+            &__logout {
+                align-self: self-end;
+                padding: 20px;
+
+                button {
+                    font-family: 'Cabin-500';
+                    padding: 10px;
+                    width: 200px;
+                    border-radius: 15px;
+                    border: 0px;
+                    color: #ffff;
+                    font-size: 15px;
+                    background: rgb(0,212,255);
+                    background: linear-gradient(90deg, rgba(0,212,255,.8) 0%, rgba(242,38,255,.8) 100%);
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    .dashboard-content {
+        width: 100%;
+        &__wrapper {
+            overflow-y: scroll;
+        }
+
+        &__nav-bar {
+            display: flex;
+            align-items: center;
+
+            &__title { 
+                width: 100%;
+                padding: 40px;
+                color: #363636;
+                font-family: 'Cabin-500';
+            }
+
+            &__post-wrapper {
+                padding: 0 100px;
+
+                &__post-button {
+                    font-family: 'Cabin-500';
+                    padding: 10px;
+                    width: 150px;
+                    border-radius: 15px;
+                    border: 0px;
+                    color: #ffff;
+                    font-size: 17px;
+                    background: rgb(0,212,255);
+                    background: linear-gradient(90deg, rgba(0,212,255,.8) 0%, rgba(242,38,255,.8) 100%);
+                    cursor: pointer;
+                }
+            }
+        }
+
+        &__publication-wrapper {
+            display: grid;
+            box-shadow: 0px 0px 30px #ababab;
+            background-color: #f1f1f1;
+            border-radius: 15px;
+            width: 90%;
+            margin: 0px 40px 40px;
+        }
+    }
+
+    .dashboard-content__wrapper::-webkit-scrollbar {
+        display: none;
+    }
+}

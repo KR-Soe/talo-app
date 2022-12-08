@@ -1,0 +1,31 @@
+.post-wrapper {
+    border: 1px solid #e1e1e1;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 15px;
+    background-color: #ebebeb;
+
+    .post-content {
+        height: 100%;
+        cursor: pointer;
+
+        &__header {
+            text-align: center;
+            font-family: 'Cabin-Regular';
+            font-weight: 800;
+            font-size: 20px;
+        }
+
+        &__body {
+            font-family: 'Cabin-Regular';
+            font-family: 18px;
+            overflow-y: scroll;
+            margin: 12px 10px 0px;
+            height: 80%;
+        }
+    }
+
+    .post-content__body::-webkit-scrollbar {
+        display: none;
+    }
+}
