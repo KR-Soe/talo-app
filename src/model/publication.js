@@ -58,4 +58,14 @@ const deletePublication = async (id) => {
     return result;
 }
 
-module.exports = { getPublicationById, getPublications, getPublicationsUser, createPublication, deletePublication };
+const updatePost = async (id, { title, message, updated, date }) => {
+    const newData = { $set: { title, message, updated, date } };
+
+    return new Promise((resolve, reject) => publicationSchema
+    .update({ _id: id }, newData, {}, (err, docs) => {
+        if(err) return reject(err);
+        return resolve(docs);
+    }));
+}
+
+module.exports = { getPublicationById, getPublications, getPublicationsUser, createPublication, deletePublication, updatePost };

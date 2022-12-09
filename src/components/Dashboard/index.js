@@ -46,7 +46,7 @@ function Dashboard() {
   const modalHandler = () => {
     openModal(!shouldBeShown);
   }
-  
+
   return (
     <div className="dashboard-wrapper">
       {
@@ -106,10 +106,9 @@ function Dashboard() {
                 return (
                   <Post 
                     key={`post-${i}`}
-                    title={post.title}
-                    message={post.message}
-                    id={post['_id']}
+                    post={post}
                     setPost={setPost}
+                    getData={getData}
                   />
                 )
               })

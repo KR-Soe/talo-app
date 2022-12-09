@@ -37,4 +37,21 @@ const deletePublication = async(req, res) => {
    return res.sendStatus(204);
 }
 
-module.exports = { getPublications, getPublicationsUser, createPublication, deletePublication };
+const updatePost = async(req, res) => {
+   const { title, message, date, updated, userId } = req.body;
+   const id = req.params.id;
+
+   if(!id) return res.sendStatus(404);
+
+   const publication = await publicationModel.updatePost(req.params.id, {
+      title,
+      message,
+      date,
+      updated,
+      userId
+   });
+
+   return res.sendStatus(204);
+}
+
+module.exports = { getPublications, getPublicationsUser, createPublication, deletePublication, updatePost };

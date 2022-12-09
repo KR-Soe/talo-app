@@ -2,7 +2,7 @@ const createPost = async ({ title, message, date, modified, userId }) => {
     if(!title) return console.log('please send an title')
     if(!message) return console.log('please send a message')
 
-    const users = await fetch('/v1/publication', {
+    const publication = await fetch('/v1/publication', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -17,7 +17,7 @@ const createPost = async ({ title, message, date, modified, userId }) => {
         })
     });
 
-    const response = await users.json();
+    const response = await publication.json();
     return response;
 };
 
@@ -43,4 +43,24 @@ const deletePublication = async(id) => {
     });
 }
 
-module.exports = { createPost, getPosts, deletePublication };
+const updatePost = async({ title, message, date, updated, userId, id }) => {
+    if(!title) return console.log('please send an title');
+    if(!message) return console.log('please send a message');
+    
+    await fetch(`/v1/publication/${id}`, {
+        method: 'PATCH',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            title: title,
+            message: message,
+            date,
+            updated,
+            userId
+        })
+    });
+}
+
+module.exports = { createPost, getPosts, deletePublication, updatePost };
