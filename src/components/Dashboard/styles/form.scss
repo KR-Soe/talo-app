@@ -1,0 +1,55 @@
+.form-wrapper {
+    display: grid;
+    justify-items: center;
+
+    .publication-form {
+        &__input-container {
+            display: grid;
+            margin: 20px;
+            width: 100%;
+
+            span {
+                font-family: 'Cabin-Regular';
+                font-size: 20px;
+            }
+
+            input {
+                font-family: 'Cabin-Regular';
+                font-size: 18px;
+                border: 0;
+                outline: 0;
+                border: 1px solid #909090;
+                border-radius: 5px;
+                padding: 7px;
+            }
+
+            textarea {
+                font-family: 'Cabin-Regular';
+                font-size: 18px;
+                border: 0;
+                outline: 0;
+                border: 1px solid #909090;
+                border-radius: 5px;
+                padding: 7px;
+                height: 200px;
+                resize: none;
+            }
+        }
+
+        &__button-container {
+            margin: 20px;
+            button{
+                font-family: 'Cabin-500';
+                padding: 10px;
+                width: 150px;
+                border-radius: 15px;
+                border: 0px;
+                color: #ffff;
+                font-size: 15px;
+                background: rgb(0,212,255);
+                background: linear-gradient(90deg, rgba(0,212,255,.8) 0%, rgba(242,38,255,.8) 100%);
+                cursor: pointer;
+            }
+        }
+    }
+}

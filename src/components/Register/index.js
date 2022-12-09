@@ -43,7 +43,7 @@ function Register() {
             <div className='login-form__footer'>
                 <p>Have an account?</p>
                 &nbsp;
-                <p style={{color: 'blue', cursor: 'pointer'}}>Sign in</p>
+                <p onClick={() => navigate('/')} style={{color: 'blue', cursor: 'pointer'}}>Sign in</p>
             </div>
         </div>
       </div>

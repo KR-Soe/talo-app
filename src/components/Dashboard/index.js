@@ -2,19 +2,24 @@ import './styles/dashboard.scss';
 import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import Post from './Post';
+import Modal from './../Modal';
+import Form from './Form';
+const { getPosts } = require('./postHandler');
 const logo = require('./../../assets/images/logo-blanco.png');
 const contactLogo = require('./../../assets/images/contact-mail.png');
 const userLogo = require('./../../assets/images/user.png');
 const emailLogo = require('./../../assets/images/email.png');
 
 function Dashboard() {
-  const tmp = {
-    title: 'This is a test',
-    message: 'Hello im testing my react-application. Its fun to improve doing this.'
-  }
   const [userData, setUser] = useState({});
-  const [userPosts, setPost] = useState([tmp, tmp,tmp,tmp]);
+  const [shouldBeShown, openModal] = useState(false);
+  const [userPosts, setPost] = useState([]);
   const navigate = useNavigate();
+
+  const getData = async () => {
+    const data = await getPosts(userData.id);
+    setPost(await data)
+  }
 
   useEffect(() => {
     const userLogged = localStorage.getItem('user');
@@ -28,14 +33,31 @@ function Dashboard() {
 
   }, []);
 
+  useEffect(() => {
+    getData();
+  }, [userData])
+
   const logoutHandler = () => {
     setUser({});
     localStorage.clear();
     navigate('/');
   }
+
+  const modalHandler = () => {
+    openModal(!shouldBeShown);
+  }
+
+  console.log('userData', userData)
   
   return (
     <div className="dashboard-wrapper">
+      {
+        shouldBeShown && (
+          <Modal modalHandler={modalHandler} shouldBeShown={shouldBeShown}>
+              <Form modalHandler={modalHandler} userId={userData.id} setPost={setPost}/>
+          </Modal>
+        )
+      }
       <div className='dashboard-aside'>
         <div className='aside-content'>
           <div className='aside-content__image-container'>
@@ -65,7 +87,9 @@ function Dashboard() {
               <h1>YOUR PERSONAL CONTENT</h1>
             </div>
             <div className='dashboard-content__nav-bar__post-wrapper'>
-              <button className='dashboard-content__nav-bar__post-wrapper__post-button'>New Post</button>
+              <button className='dashboard-content__nav-bar__post-wrapper__post-button' onClick={() => modalHandler()}>
+                New Post
+              </button>
             </div>
           </div>
           <div 

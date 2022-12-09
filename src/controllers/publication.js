@@ -1,7 +1,10 @@
 const publicationModel = require('./../model/publication');
 
 const getPublicationsUser = async(req, res) => {
-    const publication = await publicationModel.getPublicationsUser(req.params.userId)
+   const id = req.params.userId;
+   if(!id) return res.sendStatus(404);
+   const publication = await publicationModel.getPublicationsUser(req.params.userId);
+   if (!publication) return res.sendStatus(404);
 
    return res.status(200).send(publication);
 }
