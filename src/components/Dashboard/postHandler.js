@@ -33,4 +33,14 @@ const getPosts = async(userId) => {
     return result.json();
 };
 
-module.exports = { createPost, getPosts };
+const deletePublication = async(id) => {
+    await fetch(`/v1/publication/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        }
+    });
+}
+
+module.exports = { createPost, getPosts, deletePublication };

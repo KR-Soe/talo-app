@@ -1,12 +1,22 @@
 import './styles/post.scss';
 import Modal from './../Modal';
+import { deletePublication } from './postHandler';
 import React, { useState } from 'react';
 
-const Post = ({ title, message }) => {
+const Post = ({ title, message, id, setPost }) => {
     const [shouldBeShown, openModal] = useState(false);
 
     const modalHandler = () => {
         openModal(!shouldBeShown);
+    }
+
+    const deleteHandler = async () => {
+        await deletePublication(id);
+        setPost((currentValue) =>{
+            const posts = [...currentValue];
+            return posts.filter(item => item['_id'] !== id);
+        });
+        modalHandler();
     }
 
     return(
@@ -21,7 +31,7 @@ const Post = ({ title, message }) => {
                         <div className='delete-section'>
                             <span>Are you sure to delete this post?</span>
                             <div className='delete-section__button-container'>
-                                <button className='delete-section__button-container__yes-button'>Yes</button>
+                                <button className='delete-section__button-container__yes-button' onClick={() => deleteHandler()}>Yes</button>
                                 <button className='delete-section__button-container__no-button' onClick={() => modalHandler()}>No</button>
                             </div>
                         </div>

@@ -32,4 +32,9 @@ const createPublication = async (req, res) => {
    return res.status(200).send(publication);
 };
 
-module.exports = { getPublications, getPublicationsUser, createPublication };
+const deletePublication = async(req, res) => {
+   await publicationModel.deletePublication(req.params.id);
+   return res.sendStatus(204);
+}
+
+module.exports = { getPublications, getPublicationsUser, createPublication, deletePublication };

@@ -108,6 +108,8 @@ function Dashboard() {
                     key={`post-${i}`}
                     title={post.title}
                     message={post.message}
+                    id={post['_id']}
+                    setPost={setPost}
                   />
                 )
               })

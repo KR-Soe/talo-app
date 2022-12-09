@@ -48,4 +48,14 @@ const createPublication = async (publication) => {
     }));
 }
 
-module.exports = { getPublicationById, getPublications, getPublicationsUser, createPublication };
+const deletePublication = async (id) => {
+    const result = new Promise((resolve, reject) => publicationSchema
+    .remove({ _id: id }, (err, docs) => {
+        if(err) return reject(err);
+        return resolve(docs);
+    }));
+    
+    return result;
+}
+
+module.exports = { getPublicationById, getPublications, getPublicationsUser, createPublication, deletePublication };
