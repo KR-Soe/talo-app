@@ -34,11 +34,11 @@ const Form = ({ modalHandler, userId, setPost }) => {
         <div className='form-wrapper'>
             <div className='publication-form__input-container'>
                 <span>Title</span>
-                <input onChange={(evt) => onChangeInput(evt, 'title')} placeholder="Your text here"/>
+                <input onChange={(evt) => onChangeInput(evt, 'title')} placeholder="Choose a title"/>
             </div>
             <div className='publication-form__input-container'>
                 <span>Message content</span>
-                <textarea onChange={(evt) => onChangeInput(evt, 'message')} placeholder="Message"/>
+                <textarea onChange={(evt) => onChangeInput(evt, 'message')} placeholder="Your text here"/>
             </div>
             <div className='publication-form__button-container'>
                 <button onClick={() => sendPublication()}>Create Post</button>

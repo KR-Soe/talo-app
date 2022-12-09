@@ -46,14 +46,16 @@ function Dashboard() {
   const modalHandler = () => {
     openModal(!shouldBeShown);
   }
-
-  console.log('userData', userData)
   
   return (
     <div className="dashboard-wrapper">
       {
         shouldBeShown && (
-          <Modal modalHandler={modalHandler} shouldBeShown={shouldBeShown}>
+          <Modal 
+            title={'Create new publication'}
+            modalHandler={modalHandler} 
+            shouldBeShown={shouldBeShown}
+          >
               <Form modalHandler={modalHandler} userId={userData.id} setPost={setPost}/>
           </Modal>
         )

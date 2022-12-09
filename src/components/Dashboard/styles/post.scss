@@ -7,13 +7,21 @@
 
     .post-content {
         height: 100%;
-        cursor: pointer;
 
         &__header {
             text-align: center;
             font-family: 'Cabin-Regular';
             font-weight: 800;
             font-size: 20px;
+            display: flex;
+
+            span {
+                width: 100%;
+            }
+
+            .trash-can {
+                cursor: pointer;
+            }
         }
 
         &__body {
@@ -27,5 +35,45 @@
 
     .post-content__body::-webkit-scrollbar {
         display: none;
+    }
+}
+
+.delete-section {
+    span {
+        display: block;
+        text-align: center;
+        font-family: 'Cabin-Regular';
+        font-size: 25px;
+        margin: 25px;
+    }
+    &__button-container {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        margin: 10px;
+
+        &__yes-button {
+            font-family: 'Cabin-500';
+            padding: 10px;
+            width: 150px;
+            border-radius: 15px;
+            border: 0px;
+            color: #ffff;
+            font-size: 15px;
+            background: rgb(254, 66, 33);
+            cursor: pointer;
+        }
+    
+        &__no-button {
+            font-family: 'Cabin-500';
+            padding: 10px;
+            width: 150px;
+            border-radius: 15px;
+            border: 0px;
+            color: #ffff;
+            font-size: 15px;
+            background: rgb(31, 253, 150);
+            cursor: pointer;
+        }
     }
 }
